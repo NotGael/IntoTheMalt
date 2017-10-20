@@ -2,13 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Achievement extends Model
 {
-    use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -28,10 +25,10 @@ class User extends Authenticatable
     ];
 
     /**
-    * The achievements that belong to the user.
-    */
-    public function achievements()
+     * The users that belong to the achievement.
+     */
+    public function users()
     {
-        return $this->belongsToMany('App\Achievement');
+        return $this->belongsToMany('App\User');
     }
 }

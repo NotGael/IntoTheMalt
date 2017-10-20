@@ -76,5 +76,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ url('js/ajax.js') }}"></script>
 </body>
 </html>
