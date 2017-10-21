@@ -84,12 +84,13 @@
     <script>
       var map;
       function initMap() {
+
           var mapOptions = {
-          zoom: 12,
+            zoom: 12,
             center: new google.maps.LatLng(50.4167 , 4.4333),
             disableDefaultUI: true,
-              styles: [
-                    {
+            styles: [
+              {
                         "featureType": "all",
                         "elementType": "all",
                         "stylers": [
@@ -424,61 +425,55 @@
                     }
                 ]
             };
+
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
             var infoWindow = new google.maps.InfoWindow({map: map});
 
             // Try HTML5 geolocation.
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent('Location found.');
-                    map.setCenter(pos);
-                }, function() {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                });
+                navigator.geolocation.getCurrentPosition(
+                  function(position) {
+                      var pos = {
+                          lat: position.coords.latitude,
+                          lng: position.coords.longitude
+                      };
+                      infoWindow.setPosition(pos);
+                      infoWindow.setContent('Location found.');
+                      map.setCenter(pos);
+                  }, function() {
+                      handleLocationError(true, infoWindow, map.getCenter());
+                  });
             } else {
                 // Browser doesn't support Geolocation
                 handleLocationError(false, infoWindow, map.getCenter());
             }
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
             var locData = localStorage.getItem('biers');
             var locDataJson = JSON.parse(locData);
-<<<<<<< HEAD
-            console.log(locDataJson);
-            locDataJson.feed.feed.map(function(res){
-=======
 
-            /*locDataJson.feed.feed.map(function(res){
->>>>>>> 42a1c28400753fc7be5647ae9d196dec17f9673d
+
+            locDataJson.map(function(res){
                 var infowindow = new google.maps.InfoWindow({
-                  content: [res.name, res.gps]
+                  content: beerToString(res)
                 });
-<<<<<<< HEAD
-=======
-
->>>>>>> 42a1c28400753fc7be5647ae9d196dec17f9673d
                 var locDataJsonSplitted = res.gps.split(",");
 
                 var marker = new google.maps.Marker({
                   position: {lat:parseFloat(locDataJsonSplitted[0]), lng: parseFloat(locDataJsonSplitted[1])},
                   map: map,
-                  data:locData,
+                  data:res,
                 });
-<<<<<<< HEAD
-=======
-            })*/
-
->>>>>>> 42a1c28400753fc7be5647ae9d196dec17f9673d
 
                 marker.addListener("click", function(){
                     infowindow.open(map, marker);
-                })
-            })
+                });
+            });
+
+      }
+      function beerToString(res){
+        return "<h1>"+ res.name_beer+ "</h1>";
       }
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        console.log("BLOP");
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :

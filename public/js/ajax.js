@@ -36,17 +36,18 @@ $("#brewerySearchSubmit").click(function(e) {
           var beers = [];
             $.each(feed, function(index, element) {
                 console.log(element);
-                beer.push(element);
-                localStorage.setItem('biers', JSON.stringify(beer));
+                beers.push(element);
+
                 if(element.state == state && element.ebc > minEbc && element.ebc < maxEbc && element.ibu <= ibu) {
                     // localStorage.setItem('biers', JSON.stringify(element));
                     console.log("bonjour");
                     // $('#beerTable').append(txt);
                 }
             });
+            localStorage.setItem('biers', JSON.stringify(beers));
+            window.location.href='http://127.0.0.1:8000/';
         }
 
-        //window.location.replace('http://127.0.0.1:8000/');
     });
 
 });

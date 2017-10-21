@@ -12,7 +12,7 @@ class Achievement extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'image'
     ];
 
     /**
@@ -21,7 +21,7 @@ class Achievement extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        //
     ];
 
     /**
