@@ -8,12 +8,9 @@
         <title>Laravel</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-
-
     </head>
     <body>
       <div class="nav">
@@ -35,7 +32,9 @@
           <div style="border-radius:50%; background-color:#A2430D; width:100px; height:100px; z-index:999;"></div>
       </div>
       <div class="button">
-          <span class="fa fa-search loupe"></span>
+          <a href="{{ url('/home') }}">
+              <span class="fa fa-search loupe"></span>
+          </a>
       </div>
     <script>
       var map;
