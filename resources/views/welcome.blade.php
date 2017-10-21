@@ -14,14 +14,14 @@
     </head>
     <body>
       <div class="nav">
-          <h1>Into The Malt</h1>
           @if (Route::has('login'))
               <div class="links">
                   @auth
-                      <a href="{{ url('/home') }}">Home</a>
+                      <a class="title" href="{{ url('/home') }}">Into The Malt</a>
                   @else
-                      <a href="{{ route('login') }}">Login</a>
-                      <a href="{{ route('register') }}">Register</a>
+                      <a class="title" href="{{ url('/home') }}">Into The Malt</a>
+                      <a class="auth login" href="{{ route('login') }}">Login</a>
+                      <a class="auth register" href="{{ route('register') }}">Register</a>
                   @endauth
               </div>
           @endif
@@ -425,6 +425,24 @@
                 ]
             };
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            var locData = localStorage.getItem('biers');
+            var locDataJson = JSON.parse(locData);
+
+            locDataJson.feed.feed.map(function(res){
+                var infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+                
+                var locDataJsonSplitted = res.gps.split(",");
+
+                var marker = new google.maps.Marker({
+                  position: {lat:parseFloat(locDataJsonSplitted[0]), lng: parseFloat(locDataJsonSplitted[1])},
+                  map: map,
+                  data:locData,
+                });
+            })
+
+
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV7PuDFpGBhrG79Aah4jlAXEI26ziN0_o&callback=initMap"></script>
