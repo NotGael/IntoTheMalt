@@ -64,7 +64,10 @@
             }
         </style>
     </head>
-    <body>
+    <body >
+        <div style="height:100%; width:100%;">
+            <div id="map" style="height:800px; width:1200px;"></div>
+        </div>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -77,5 +80,15 @@
                 </div>
             @endif
         </div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 4
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV7PuDFpGBhrG79Aah4jlAXEI26ziN0_o&callback=initMap"></script>
     </body>
 </html>
