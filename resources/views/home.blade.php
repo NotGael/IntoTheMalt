@@ -37,7 +37,34 @@
                       <th>image9</th>
                       <th>image10</th>
                     </table>
-                    You are logged in!
+                    <!-- Front-End Comment Styliser le Form ['url' => 'foo/bar', 'class' => myClass, 'id' => myId]-->
+                    <!-- SELECT ... ['placeholder' => 'Pick a size...', 'class' => myClass, 'id' => myId] -->
+                    {!! Form::open(['url' => 'foo/bar']) !!}
+                        {!! Form::token() !!}
+                        <!-- Province -->
+                        {!! Form::select('size', ['Anvers' => 'Anvers',
+                                                  'Brabant flamand' => 'Brabant flamand',
+                                                  'Brabant wallon' => 'Brabant wallon',
+                                                  'Flandre occidentale' => 'Flandre occidentale',
+                                                  'Flandre orientale' => 'Flandre orientale',
+                                                  'Hainaut' => 'Hainaut',
+                                                  'Liège' => 'Liège',
+                                                  'Limbourg' => 'Limbourg',
+                                                  'Luxembourg' => 'Luxembourg',
+                                                  'Namur' => 'Namur'], null, ['placeholder' => 'Choisi une province ...']) !!}
+                                          <!-- distance / checkbox : blonde, brune, ambrée -->
+                        {!! Form::number('number', '50') !!}
+                        <!-- Range -->
+                        {!! Form::macro('myField', function()
+                          {
+                            return '<!--input type="awesome"-->';
+                          });
+                        !!}
+                        <!-- Type -->
+                        {!! Form::checkbox('Blonde', 'blonde') !!}
+                        {!! Form::checkbox('Brune', 'brune') !!}
+                        {!! Form::checkbox('Ambrée', 'ambree') !!}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
