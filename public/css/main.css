@@ -67,7 +67,7 @@
         background-color: #D4813A;
         z-index:998;
         left:80%;
-        top: -10rem;
+        top: -15rem;
     }
 
     .button a{
@@ -138,4 +138,22 @@
     .auth{
         position:absolute;
         left:40%;
+    }
+
+    .footer{
+        position:absolute;
+        bottom:0;
+        height:40px;
+        width:100%;
+        background:#7D3D11;
+    }
+
+    .photo{
+        position:relative;
+        width:80px;
+        height:80px;
+        border-radius: 50%;
+        float:right;
+        top:-85px;
+        right:30px;
     }

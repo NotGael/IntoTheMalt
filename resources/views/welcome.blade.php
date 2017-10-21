@@ -75,7 +75,14 @@
                 c-0.5,0.6-0.7,1.2-0.7,1.8c0,0.4,0.1,0.8,0.3,1.2c2.7,5.1,23.2,9.1,48.2,9.1c18.6,0,34.8-2.2,42.9-5.4c3.6-1.4,5.6-3,5.6-4.8
                 c0-0.5-0.2-1-0.5-1.5c-2-9.1-15.9-78.5,9.2-181c4.3-17.4,5.4-42.7,5.6-62.8c0-1.9,0-3.7,0-5.5C265.5,80.7,241.6,79.2,213.8,79.2z"/>
         </svg>
+        <div class="">
+            <h3 style="position:relative; left:20px">Km parcourus: 68</h3>
+            <img class="photo" src="https://arkthus.files.wordpress.com/2012/05/justin-bartha-justin-bartha-22673704-400-3001.jpg" alt="">
+            <p style="float:right; top:-20px; left:60px; position:relative; font-weight:bold;">Est à proximité</p>
+        </div>
+        <div class="footer">
 
+        </div>
       <div class="button">
           <a href="{{ url('/home') }}">
               <span class="fa fa-search loupe"></span>
@@ -470,10 +477,9 @@
 
       }
       function beerToString(res){
-        return "<h1>"+ res.name_beer+ "</h1>";
+        return "<div><img src='"+ res.images +"'/><br/><b>nom:</b> "+ res.name_beer+ "<br/><b>Indice de couleur:</b> "+res.ebc +"<br/><b>Indice d'amertume: </b>"+ res.ibu+"<br/><b>Degré d'alcool: </b>"+ res.abv + "</div>";
       }
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        console.log("BLOP");
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :
