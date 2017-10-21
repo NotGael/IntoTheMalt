@@ -48,29 +48,6 @@
                         {!! Form::checkbox('ebc', 'stout') !!}
                         <button id="brewerySearchSubmit">Submit</button>
                     {!! Form::close() !!}
-                    <h2>Get Location</h2>
-                    {!! Form::open(['action' => 'HomeController@getLocation']) !!}
-                        {!! Form::select('state', ['Antwerpen' => 'Anvers',
-                                                  'Vlaams Brabant' => 'Brabant Flamand',
-                                                  'Brabant Wallon' => 'Brabant Wallon',
-                                                  'West-Vlaanderen"' => 'Flandre Occidentale',
-                                                  'Oost-Vlaanderen' => 'Flandre Orientale',
-                                                  'Hainaut' => 'Hainaut',
-                                                  'Lige' => 'Liège',
-                                                  'Limburg' => 'Limbourg',
-                                                  'Luxembourg' => 'Luxembourg',
-                                                  'Namur' => 'Namur'], null, ['placeholder' => 'Choisi une province ...']) !!}
-                        <!-- Type -->
-                        <label>Blonde : </label>
-                        {!! Form::checkbox('ebc', 'blonde') !!}
-                        <label>Brune : </label>
-                        {!! Form::checkbox('ebc', 'brune') !!}
-                        <label>Ambree : </label>
-                        {!! Form::checkbox('ebc', 'ambree') !!}
-                        <label>Stout : </label>
-                        {!! Form::checkbox('ebc', 'stout') !!}
-                        {!! Form::submit('Submit'); !!}
-                    {!! Form::close() !!}
                     <table id="beerTable">
                         <th>id_beers</th>
                         <th>name_beer</th>
