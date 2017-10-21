@@ -67,6 +67,6 @@ $("#brewerySearchSubmit").click(function(e) {
                 }
             });
         }
-        window.location.replace('http://127.0.0.1:8000/');
+        //window.location.replace('http://127.0.0.1:8000/');
     });
 });
