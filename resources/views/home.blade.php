@@ -13,11 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <!-- Front-End Comment Styliser le Form ['url' => 'foo/bar', 'class' => myClass, 'id' => myId]-->
-                    <!-- SELECT ... ['placeholder' => 'Pick a size...', 'class' => myClass, 'id' => myId] -->
                     <form name="brewerySearch" id="brewerySearch">
                         {!! Form::token() !!}
-                        <!-- Province -->
+                        <!-- State -->
                         {!! Form::select('state', ['Antwerpen' => 'Anvers',
                                                   'Vlaams Brabant' => 'Brabant Flamand',
                                                   'Brabant Wallon' => 'Brabant Wallon',
@@ -28,25 +26,14 @@
                                                   'Limburg' => 'Limbourg',
                                                   'Luxembourg' => 'Luxembourg',
                                                   'Namur' => 'Namur'], null, ['placeholder' => 'Choisi une province ...']) !!}
-                                          <!-- distance / checkbox : blonde, brune, ambrée -->
-                        {!! Form::number('range', '50') !!}
-                        <!-- Range -->
-                        {!! Form::macro('myField', function()
-                          {
-                            return '<!--input type="awesome"-->';
-                          });
-                        !!}
-                        {!! Form::myField() !!}
-                        <!-- Type -->
-                        <label>Blonde : </label>
-                        {!! Form::checkbox('ebc', 'blonde') !!}
-                        <label>Brune : </label>
-                        {!! Form::checkbox('ebc', 'brune') !!}
-                        <label>Ambree : </label>
-                        {!! Form::checkbox('ebc', 'ambree') !!}
-                        <label>Stout : </label>
-                        {!! Form::checkbox('ebc', 'stout') !!}
-                        <button id="brewerySearchSubmit">Submit</button>
+                        <!-- EBC -->
+                        {!! Form::select('ebc', ['blonde' => 'Blonde',
+                                                  'ambree' => 'Ambrée',
+                                                  'brune' => 'Brune',
+                                                  'stout' => 'Stout'], null, ['placeholder' => 'Choisi une sorte de bière ...']) !!}
+                        <!-- IBU -->
+                        {!! Form::number('ibu', '50') !!}
+                        <button id="brewerySearchSubmit">Rechercher</button>
                     {!! Form::close() !!}
                     <table id="beerTable">
                         <th>id_beers</th>
