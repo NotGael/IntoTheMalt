@@ -6,6 +6,7 @@ $("#brewerySearchSubmit").click(function(e) {
         data: {},
         dataType: 'json',
         success: function (data) {
+          localStorage.setItem('biers', JSON.stringify(data));
           var state = $("#brewerySearch select[name=state]").val();
           var range = $("#brewerySearch input[name=range]").val();
           var ebc = $("#brewerySearch input[name=ebc]").val();
