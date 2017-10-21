@@ -8,28 +8,31 @@ $("#brewerySearchSubmit").click(function(e) {
         success: function (data) {
           localStorage.setItem('biers', JSON.stringify(data));
           var state = $("#brewerySearch select[name=state]").val();
-          var range = $("#brewerySearch input[name=range]").val();
-          var ebc = $("#brewerySearch input[name=ebc]").val();
+          var ebc = $("#brewerySearch select[name=ebc]").val();
+          var ibu = $("#brewerySearch input[name=ibu]").val();
           var minEbc = 0;
           var maxEbc = 0;
-          /*if(ebc >= 75) {
+          if(ebc == "stout") {
               minEbc = 75;
               maxEbc = 100;
-          } else if(ebc >= 50) {
+          } else if(ebc == "brune") {
               minEbc = 50;
               maxEbc = 75;
-          } else if(ebc >=25) {
+          } else if(ebc == "ambree") {
               minEbc = 25;
               maxEbc = 50;
-          }else if(ebc >= 0) {
+          }else if(ebc == "blonde") {
               minEbc = 0;
               maxEbc = 25;
-          }*/
-          // alert(state + " " + range + " " + ebc);
+          } else {
+              minEbc = 0;
+              maxEbc= 100;
+          }
+          alert("State : " + state + "\nEBC : " + ebc + "\nEBC min : " + minEbc + "\nEBC max : " + maxEbc);
           var feed = data.feed.feed;
-          console.log(feed);
             $.each(feed, function(index, element) {
-                if(element.state == state /*&& element.ebc > minEbC && element.ebc < maxEbc*/) {
+                if(element.state == state && element.ebc > minEbc && element.ebc < maxEbc && element.ibu <= ibu) {
+                    console.log('Test');
                     var txt = "<tr>" + "<td>" + element.id_beers + "</td>" +
                                        "<td>" + element.name_beer + "</td>" +
                                        "<td>" + element.description + "</td>" +
@@ -61,18 +64,9 @@ $("#brewerySearchSubmit").click(function(e) {
                                        "<td>" + element.web + "</td>" +
                                        "</tr>";
                     $('#beerTable').append(txt);
-                    // console.log("Mybeer "+ element.name_beer + " is located at " + element.gps);
                 }
             });
         }
-    });
-    console.log(feed);
-    $.ajax({
-        type:'POST',
-        url:'../welcome.blade.php',
-        data:{
-            feed:feed
-        },
-        dataType:'JSON'
+        window.location.replace('http://127.0.0.1:8000/');
     });
 });
