@@ -1,0 +1,12 @@
+Créer une BD avec le nom que vous voulez
+Configurer le fichier .env à la racine
+  avec les info de la BD
+
+Terminal - CMD - Console
+Se mettre dans le répertoire du projet cd ../
+Télécharger les lib
+-> composer update
+Créer une clé d'auth pour l'app
+-> php artisan key:generate
+Créer la base de donnée
+-> php artisan migrate
