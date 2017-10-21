@@ -427,12 +427,11 @@
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);
             var locData = localStorage.getItem('biers');
             var locDataJson = JSON.parse(locData);
-
+            console.log(locDataJson);
             locDataJson.feed.feed.map(function(res){
                 var infowindow = new google.maps.InfoWindow({
-                  content: contentString
+                  content: [res.name, res.gps]
                 });
-                
                 var locDataJsonSplitted = res.gps.split(",");
 
                 var marker = new google.maps.Marker({
@@ -440,9 +439,11 @@
                   map: map,
                   data:locData,
                 });
+
+                marker.addListener("click", function(){
+                    infowindow.open(map, marker);
+                })
             })
-
-
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV7PuDFpGBhrG79Aah4jlAXEI26ziN0_o&callback=initMap"></script>
